@@ -8,6 +8,8 @@ import (
 func main() {
 	var arr1 [6]int
 	var slice1 []int = arr1[2:5]
+	var sl []byte
+	Append(sl, []byte{'g', 'o'})
 
 	for i := 0; i < len(arr1); i++ {
 		arr1[i] = i
@@ -74,8 +76,13 @@ func BufferExample() {
 	fmt.Print(buffer.String())
 }
 
-func Append(slice, data []byte) []byte {
-	//
+func Append(slice, data []byte) {
+	for i := 0; i < len(data); i++ {
+		slice = append(slice, data[i])
+	}
+	println("====================\n")
+	println(&slice)
+	println("====================\n")
 }
 
 func BufferSlice() {
