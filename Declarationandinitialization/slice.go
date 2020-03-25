@@ -85,6 +85,45 @@ func Append(slice, data []byte) {
 	println("====================\n")
 }
 
-func BufferSlice() {
-	//
+func InsertStringSlice(s1, s2 []string, index int) {
+	new_slice := make([]string, len(s1)+len(s2))
+	if index <= len(new_slice) {
+		at := copy(new_slice, s2[:index])
+		at += copy(new_slice[at:], s1)
+		copy(new_slice[at:], s2[index:])
+		fmt.Println(new_slice)
+	}
+	panic("error index value")
+}
+
+func RemoveStringSlice(StringList []string, start, end int) {
+	if end > start {
+		NewString := make([]string, len(StringList)-(end-start))
+		index := copy(NewString, NewString[:start])
+		copy(NewString[index:], NewString[end:])
+		fmt.Println(NewString)
+	}
+
+}
+
+func sliceExtend(s []int, factor int) {
+	sLen := len(s)
+	extendLen := sLen * factor
+	if extendLen > cap(s) {
+		NewSlice := make([]int, extendLen)
+		s = NewSlice
+	}
+	s = s[0:extendLen]
+}
+
+func CopyAppend() {
+	slF := []int{1, 2, 3}
+	slT := make([]int, 10)
+	n := copy(slT, slF)
+	fmt.Println(slT)
+	fmt.Printf("copy %d ele\n", n)
+
+	sl3 := []int{1, 2, 3}
+	sl3 = append(sl3, 4, 5, 6)
+	fmt.Println(sl3)
 }
